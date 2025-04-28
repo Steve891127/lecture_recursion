@@ -1,6 +1,16 @@
 import os
 import json
+def recursive_binary_search(searched_list, searched_value, left_idx, right_idx):
+    if searched_value == searched_list[int((right_idx + left_idx)/2)]:
+        return int((right_idx + left_idx)/2)
+    elif searched_value < searched_list[int((right_idx + left_idx)/2)]:
+        output = recursive_binary_search(searched_list, searched_value, left_idx, int((right_idx + left_idx)/2) - 1)
+        return output
+    elif searched_value > searched_list[int((right_idx + left_idx)/2)]:
+        output = recursive_binary_search(searched_list, searched_value, int((right_idx + left_idx)/2) + 1, right_idx)
+        return  output
 
+print(recursive_binary_search([1, 2, 3 ,4 ,5 , 6], 6, 0, 5))
 cwd_path = os.getcwd()
 file_path = "files"
 
